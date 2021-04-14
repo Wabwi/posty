@@ -18,7 +18,7 @@
             <ul class="flex items-center">
                 <li><a href="" class="p-3"></a>Wabwi</li>
                 <li><a href="" class="p-3"></a>Login</li>
-                <li><a href="" class="p-3"></a>Register</li>
+                <li><a href="{{ route('register') }}" class="p-3"></a>Register</li>
                 <li><a href="" class="p-3"></a>Logout</li>
             </ul>
 
