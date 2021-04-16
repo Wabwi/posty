@@ -10,16 +10,33 @@
     <body class="bg-gray-200">
         <nav class="p-6 mb-6 bg-white flex justify-between">
             <ul class="flex items-center">
-                <li><a href="" class="p-3"></a>Home</li>
-                <li><a href="" class="p-3"></a>Dashboard</li>
-                <li><a href="" class="p-3"></a>Post</li>
+                <li><a href="/" class="p-3">Home</a></li>
+                <li><a href="{{ route('dashboard') }}" class="p-3">Dashboard</a></li>
+                <li><a href="" class="p-3">Post</a></li>
             </ul>
 
             <ul class="flex items-center">
-                <li><a href="" class="p-3"></a>Wabwi</li>
-                <li><a href="" class="p-3"></a>Login</li>
-                <li><a href="{{ route('register') }}" class="p-3"></a>Register</li>
-                <li><a href="" class="p-3"></a>Logout</li>
+                {{-- @if(auth() -> user()) --}}
+                @auth
+                    <li><a href="" class="p-3">Wabwi</a></li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="post" class="inline">
+                            @csrf
+                            <button type="submit">Logout</button>
+                        </form>
+                        
+                    </li>
+                {{-- @else --}}
+                @endauth
+
+                @guest
+                    <li><a href="{{ route('login') }}" class="p-3">Login</a></li>
+                    <li><a href="{{ route('register') }}" class="p-3">Register</a></li>
+                {{-- @endif --}}
+                @endguest
+                
+                
+                
             </ul>
 
         </nav>
