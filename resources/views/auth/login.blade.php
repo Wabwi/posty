@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="password" class="sr-only">Password</label>
+                    <label for="password" class="sr-only" className>Password</label>
                     <input type="password" name="password" id="password" placeholder="password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password') border-red-500 @enderror" value="">
 
                     @error('password')
@@ -31,6 +31,14 @@
                             {{ $message }}
                         </div>
                     @enderror
+                </div>
+
+                <div class="mb-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" class="mr-2" name="remember" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    
                 </div>
 
                 <div>

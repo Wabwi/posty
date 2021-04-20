@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    
+    //using constructor to redirected already signed in users
+    public function __construct() {
+        $this -> middleware(['guest']);
+    }
+    
     public function index() {
         return view('auth.login');
     }
@@ -19,7 +25,7 @@ class LoginController extends Controller
         ]);
 
         //sign in
-        if(!auth() -> attempt($request -> only('email', 'password'))) {
+        if(!auth() -> attempt($request -> only('email', 'password'), $request -> remember)) {
             //if not authenticated
             return back() -> with('status', 'Invalid login details');
         }

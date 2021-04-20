@@ -10,12 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    //using constructor to redirected already signed in users
+    public function __construct() {
+        $this -> middleware(['guest']);
+    }
+
     public function index() {
         return view('auth.register');
     }
 
     public function store(Request $request) {
-        
         //validation
         $this -> validate($request, [
             'name' => 'required|max:255',
